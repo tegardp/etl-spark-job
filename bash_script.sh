@@ -35,4 +35,6 @@ gcloud dataproc jobs submit pyspark spark_job.py \
     --region=$REGION \
     --jars=gs://spark-lib/bigquery/spark-bigquery-latest.jar
 
+# Delete Dataproc Cluster
+gcloud dataproc clusters delete $CLUSTER_NAME
 
