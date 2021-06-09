@@ -38,5 +38,5 @@ flightData.withColumn('flight_date', F.date_add(
 
 # Saving the data to BigQuery
 flightData.write.format('bigquery') \
-    .option('table', 'staging.flight_data') \
-    .save()
+    .option('temporaryGcsBucket', 'academi/temp') \
+    .save('staging.flight_data')

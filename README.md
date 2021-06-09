@@ -24,9 +24,9 @@ Flight data, you can see the datasets on `data` folder
 
 1. Google Cloud SDK. To set it up read it [here](https://cloud.google.com/sdk/docs/quickstart#installing_the_latest_version)
 2. Git. For windows you can download git bash from [here](https://git-scm.com/downloads)
-3. PySpark Knowledge. Read it [here](https://jacobcelestine.com/knowledge_repo/colab_and_pyspark/)
+3. PySpark Knowledge. Read it [here](https://spark.apache.org/docs/latest/sql-getting-started.html)
 
 ## Installation
 
-1. run command `$ chmod +x bash_script.sh`
-2. then run `$ ./bash_script.h`
+1. for linux run command `$ chmod +x bash_script.sh`
+2. run `$ ./bash_script.h`
