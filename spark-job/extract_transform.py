@@ -17,21 +17,15 @@ fields = [
     StructField("arrival_time", StringType(), True),
     StructField("destination_airport", StringType(), True),
     StructField("distance", IntegerType(), True),
-    StructField("flight_date", StringType(), True),
+    StructField("flight_date", DateType(), True),
     StructField("flight_num", IntegerType(), True),
     StructField("id", IntegerType(), True),
     StructField("source_airport", StringType(), True),
 ]
 schema = StructType(fields)
 
-# Create Empty DataFrame with defined schema
-flightData = spark.createDataFrame([], schema)
-
 # Fill DataFrame with Flight Data
-files = ["gs://academi/2021-04-27.json", "gs://academi/2021-04-28.json",
-         "gs://academi/2021-04-29.json", "gs://academi/2021-04-30.json"]
-for file in files:
-    flightData = spark.read.json(file, schema=schema).union(flightData)
+flightData = spark.read.json("gs://academi/data/*.json", schema=schema)
 
 flightData.withColumn('flight_date', F.date_add(
     flightData['flight_date'], 723)).show()
@@ -39,4 +33,9 @@ flightData.withColumn('flight_date', F.date_add(
 # Saving the data to BigQuery
 flightData.write.format('bigquery') \
     .option('temporaryGcsBucket', 'academi/temp') \
+    .option('partitionField', 'flight_date') \
     .save('staging.flight_data')
+
+aggregated = flightData.groupBy('airline_code')
+aggregated = aggregated.agg({'airline_code':'count','arrival_delay':'average',}).orderBy('avg(arrival_delay)').show()
+
