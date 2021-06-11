@@ -36,6 +36,7 @@ flightData.write.format('bigquery') \
     .option('partitionField', 'flight_date') \
     .save('staging.flight_data')
 
+# Aggregation
 aggregated = flightData.groupBy('airline_code')
-aggregated = aggregated.agg({'airline_code':'count','arrival_delay':'average',}).orderBy('avg(arrival_delay)').show()
-
+aggregated = aggregated.agg({'airline_code': 'count', 'arrival_delay': 'average', }).orderBy(
+    'avg(arrival_delay)').show()

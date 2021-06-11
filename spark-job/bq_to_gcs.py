@@ -8,8 +8,8 @@ spark = SparkSession \
     .getOrCreate()
 
 df = spark.read \
-  .format("bigquery") \
-  .load("academi-315713.staging.flight_data")
+    .format("bigquery") \
+    .load("academi-315713.staging.flight_data")
 
 df.write \
   .partitionBy("flight_date") \
