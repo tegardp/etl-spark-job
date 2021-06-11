@@ -30,6 +30,7 @@ jupyter-client @ file:///tmp/build/80754af9/jupyter_client_1616770841739/work
 jupyter-core @ file:///tmp/build/80754af9/jupyter_core_1612213308682/work
 jupyter-packaging @ file:///tmp/build/80754af9/jupyter-packaging_1613502826984/work
 jupyter-server @ file:///tmp/build/80754af9/jupyter_server_1616083640409/work
+jupyterlab==3.0.16
 jupyterlab-pygments @ file:///tmp/build/80754af9/jupyterlab_pygments_1601490720602/work
 jupyterlab-server @ file:///tmp/build/80754af9/jupyterlab_server_1617134334258/work
 MarkupSafe @ file:///tmp/build/80754af9/markupsafe_1621528150516/work
